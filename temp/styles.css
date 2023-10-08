@@ -1,0 +1,34 @@
+/* Center the title */
+h1 {
+    text-align: center;
+}
+
+/* Style the dropdowns */
+div {
+    margin-bottom: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the sample data container */
+#sampleData {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+}
+
+/* Style the map container */
+#map {
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

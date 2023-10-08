@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution</title>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- local css file -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Include your logic.js script -->
+    <script src="logic.js"></script>
+</head>
+<body>
+    <h1>Pollution</h1>
+    
+    <!-- Add dropdown boxes -->
+    <div>
+        <label for="locationDropdown">Location (City):</label>
+        <select id="locationDropdown">
+            <option value="all">All Locations</option>
+            <!-- City names will be populated dynamically from JSON data -->
+        </select>
+    </div>
+    <div>
+        <label for="pollutionDropdown">Pollution:</label>
+        <select id="pollutionDropdown">
+            <option value="all">All Pollution</option>
+            <!-- Pollution types will be populated dynamically from JSON data -->
+        </select>
+    </div>
+
+
+    
+
+    <!-- Map container -->
+    <div id="map" style="height: 400px;"></div>
+    <br><br>
+    <!-- Line graph container -->
+    <label for="linegraph">City Pollution Trend:</label>
+    <div id="linegraph" style="height: 300px;">
+    </div>
+    <!-- Heat map container -->
+    <label for="heatmap">Heat map:</label>
+    <div id="heatmap" style="height: 300px;">
+    </div>
+    <br><br>
+    <!-- Choropleth Map -->
+    <label for="locationDropdown">Location (City):</label>
+    <div id="choropleth" style="height: 300px;">
+    </div>
+
+    
+</body>
+</html>
