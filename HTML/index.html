@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script> <!-- Add D3 library -->
+</head>
+<body>
+    <div>
+        <label for="cityDropdown">Select a City:</label>
+        <select id="cityDropdown">
+            <!-- Options will be dynamically added using D3 -->
+        </select>
+    </div>
+    <div id="map" style="width: 100%; height: 400px;"></div>
+    <script src="logic.js"></script>
+</body>
+</html>
