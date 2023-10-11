@@ -18,27 +18,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 jumbotron text-center">
-                <h1>Pollutant Trends by US City</h1>
-                <p>Choose a City to view each pollutant trend</p>
+                <h2>Pollutant Trends by US City</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
                 <div class="well">
                     <h5>Select a City:</h5>
-                    <select id="citySelect">
-                        <!-- Populate the options dynamically with unique cities from your JSON data -->
-                    </select>
+                    <select id="citySelect"></select>
                 </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">City Info</h3>
-                    </div>
-                    <div id="sample-metadata" class="panel-body"></div>
+
+                <div class="well">
+                    <button id="updateChartButton">Update Chart</button>
                 </div>
+ 
             </div>
             <div class="col-md-5">
                 <canvas id="coChart" width="400" height="200"></canvas>
+                <canvas id="no2Chart" width="400" height="200"></canvas>
+                <canvas id="so2Chart" width="400" height="200"></canvas>
+                <canvas id="pm10Chart" width="400" height="200"></canvas>
+                <canvas id="o3Chart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>

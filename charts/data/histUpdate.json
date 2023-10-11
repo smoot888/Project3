@@ -387,14 +387,7 @@
     "2022": "17",
     "Primary Key": "9",
     "CBSA": "10580",
-    "City": "Albany",
-    "State": "NY",
-    "Lat": "42.614852",
-    "Lon": "-73.970812",
-    "Pollutant": "PM2.5",
-    "Trend Statistic": "98th Percentile",
-    "Number of Trend Sites": "1"
-  },
+   
   {
     "1990": "5.1",
     "1991": "5.5",
@@ -699,6 +692,13 @@
     "State": "NM",
     "Lat": "35.199592",
     "Lon": "-106.644831",
+    "Pollutant": "PM2.5",
+    "Trend Statistic": "98th Percentile",
+    "Number of Trend Sites": "1"
+  }, "City": "Albany",
+    "State": "NY",
+    "Lat": "42.614852",
+    "Lon": "-73.970812",
     "Pollutant": "PM2.5",
     "Trend Statistic": "98th Percentile",
     "Number of Trend Sites": "1"
