@@ -34,7 +34,7 @@ select {
 }
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../../templates/pollution.jpg');
+    background-image: url('../../pollution.jpg');
     /* Image credit to Kouji Tsuru */
     background-size: cover;
     background-attachment: fixed;
