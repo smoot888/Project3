@@ -1,44 +1,16 @@
 // Function to update dropdowns with unique city names and pollution types
 function populateDropdowns(data) {
-    const locationDropdown = document.getElementById("locationDropdown");
     const pollutionDropdown = document.getElementById("pollutionDropdown");
-
-    // Create arrays to store unique city names and pollution types
-    const uniqueCities = [];
-    const uniquePollutionTypes = [];
-
-    // Iterate through the data to find unique values
-    data.forEach(item => {
-        if (!uniqueCities.includes(item.City)) {
-            uniqueCities.push(item.City);
-        }
-        if (!uniquePollutionTypes.includes(item.Pollutant)) {
-            uniquePollutionTypes.push(item.Pollutant);
-        }
-    });
-
-    // Populate the location (city) dropdown
-    locationDropdown.innerHTML = '<option value="all">All Locations</option>';
-    uniqueCities.forEach(city => {
-        locationDropdown.innerHTML += `<option value="${city}">${city}</option>`;
-    });
-
-    // Populate the pollution dropdown
-    pollutionDropdown.innerHTML = '<option value="all">All Pollution</option>';
-    uniquePollutionTypes.forEach(pollution => {
-        pollutionDropdown.innerHTML += `<option value="${pollution}">${pollution}</option>`;
-    });
+    const yearDropdown = document.getElementById("yearDropdown");
 }
 
-// Function to update the displayed JSON data based on dropdown selections
-function updateData(location, pollutant) {
+function updateData(pollutant) {
     fetch('data/histUpdate.json')
         .then(response => response.json())
         .then(data => {
             // Filter the data based on dropdown selections
             const filteredData = data.filter(item => {
-                return (location === "all" || item.City === location) &&
-                       (pollutant === "all" || item.Pollutant === pollutant);
+                return (pollutant === "all" || item.Pollutant === pollutant);
             });
 
             // Display the JSON data
@@ -52,56 +24,108 @@ function updateData(location, pollutant) {
                     map.removeLayer(layer);
                 }
             });
-
-            // Add markers for each filtered data point on the map
-            filteredData.forEach(item => {
-                // Use "lat" and "lon" coordinates from JSON data
-                const lat = parseFloat(item.lat);
-                const lon = parseFloat(item.lon);
-                if (!isNaN(lat) && !isNaN(lon)) {
-                    L.marker([lat, lon]).addTo(map)
-                        .bindPopup(`${item.City}, ${item.State}<br>Pollution: ${item.Pollutant}<br>Value: ${item['2022']} (2022)`); // Customize the popup content
-                }
-            });
         })
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Wait for the DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
+
+
+
+// Create event listener for a change in the Pollutant dropdown
+let userSelectedPollutant = "";
+function updatePollutant(pollutant){
+    userSelectedPollutant = pollutant;
+};
+const selectedPollutant = document.getElementById('pollutionDropdown');
+selectedPollutant.addEventListener('change', function(){
+    const selectedOption = selectedPollutant.value;
+    console.log(selectedOption);
+    updatePollutant(selectedOption)
+    
+});
+
+// Create event listener for a change in the Year dropdown
+let userSelectedYear = "";
+function updateYear(year){
+    userSelectedYear = year;
+};
+const selectedYear = document.getElementById('yearDropdown');
+selectedYear.addEventListener('change', function(){
+    const selectedOption = selectedYear.value;
+    console.log(selectedOption);
+    updateYear(selectedOption);
+});
+
+//Initialize heatmap instance
+var cfg = {
+    "radius": 2,
+    "maxOpacity": .8,
+    "scaleRadius": true,
+    "useLocalExtrema": false,
+    "latField": 'Lat',
+    "lngField": 'Lon',
+    "valueField": 'Data'
+};
+
+var baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
+
+var heatmapLayer = new HeatmapOverlay(cfg);
+
+var map = new L.Map('heatmap',{
+    center: new L.LatLng(37.0902, -95.7129),
+    zoom: 4,
+    layers: [baseLayer, heatmapLayer]
+});
+
+// Function to create a heat map
+function createHeatMap(data) {
+        //find max value in dataset
+        let testmax = 0;
+        for (let i = 0; i<data.length; i++){
+            if (data[i][userSelectedYear] > testmax){
+                testmax = data[i][userSelectedYear];
+            };
+        };
+        let max = 0;
+        if (userSelectedPollutant == "O3"){
+            max = 0.2;
+        }
+        if (userSelectedPollutant == "PM2.5"){
+            max = 50;
+        }
+        if (userSelectedPollutant == "SO2"){
+            max = 200;
+        }
+        if (userSelectedPollutant == "CO"){
+            max = 10;
+        }
+        if (userSelectedPollutant == "NO2"){
+            max = 100;
+        }
+        if (userSelectedPollutant == "PM10"){
+            max = 100;
+        }
+        
+        console.log(testmax);
+        console.log(max);
+        heatmapLayer.setData({"max":max,"min":0,"data":data});
+
+};
+
+   
+function buttonClick(){
     // Fetch data and populate dropdowns when the page loads
-    fetch('data/histUpdate.json')
+    fetch('../data/histUpdate.json')
         .then(response => response.json())
         .then(data => {
-            populateDropdowns(data); // Populate dropdowns with unique values
-            updateData("all", "all"); // Initial data update
-        })
+            // Filter the data based on dropdown selections
+            console.log(userSelectedYear);
+            const filteredData = data.filter((item) => item.Pollutant == userSelectedPollutant);
+            for (let i = 0; i<filteredData.length; i++){
+                filteredData[i]['Data']=filteredData[i][userSelectedYear]
+            }
+            console.log(filteredData);
+            createHeatMap(filteredData);
+        }) 
         .catch(error => console.error('Error fetching data:', error));
-
-    // Create a Leaflet map centered on the USA
-    const map = L.map('map').setView([37.0902, -95.7129], 4); // Centered on the USA (latitude, longitude, zoom level)
-
-    // Add a tile layer (you can use your preferred map provider)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-    }).addTo(map);
-
-
-    // Function to create a line graph
-    function createLineGraph(data) {
-        // Your line graph creation code here
-        // Use data to generate the line graph
-    }
-
-    // Function to create a heat map
-    function createHeatMap(data) {
-        // Your heat map creation code here
-        // Use data to generate the heat map
-    }
-
-    // Function to create a choropleth map
-    function createChoropleth(data) {
-        // Your choropleth map creation code here
-        // Use data to generate the choropleth map
-    }
-});
+}

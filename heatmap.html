@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution</title>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- local css file -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/heatmap.js"></script>
+    <script type="text/javascript" src="static/js/leaflet-heatmap.js"></script>
+</head>
+<body>
+    <h1>Pollution</h1>
+    
+    <!-- Add dropdown boxes -->
+    <div>
+        <label for="pollutionDropdown">Pollution:</label>
+        <select id="pollutionDropdown">
+            <option value="">Select Pollution Type</option>
+            <option value="O3">O3</option>
+            <option value="PM2.5">PM2.5</option>
+            <option value="SO2">SO2</option>
+            <option value="CO">CO</option>
+            <option value="NO2">NO2</option>
+            <option value="PM10">PM10</option>
+            <!-- Pollution types will be populated dynamically from JSON data -->
+        </select>
+    </div>
+    <div>
+        <label for="yearDropdown">Year:</label>
+        <select id="yearDropdown" onchange="selectedYear">
+            <option value="">Select Year</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <!-- Years will be populated dynamically from JSON data -->
+        </select>
+    </div>
+    <div>
+        <button id="mapButton" onclick="buttonClick()">Generate Heat Map</button>
+    </div>
+   
+    <!-- Heat map container -->
+    <label for="heatmap">Heat map:</label>
+    <div id="heatmap" style="height: 300px;">
+    </div>
+    <br><br>
+    
+    <!-- Include your logic.js script -->
+    <script src="heatmap.js"></script>
+</body>
+</html>
