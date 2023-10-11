@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution</title>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- local css file -->
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/styles.css"> -->
+</head>
+<body>
+    <h1>Pollution</h1>
+    <form action="index.html" method="get"></form>
+        <div>
+            <label for="yearDropdown">Select Year:</label> 
+            <select id="yearDropdown" name="year">
+                <option value="">Select Year</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+            </select>
+        </div>
+        <div>
+            <label for="pollutionDropdown">Select Pollution Type:</label>
+            <select id="pollutionDropdown">
+                <!-- Populate pollution type options here -->
+                <option value="">Select Pollutant Type</option>
+                <option value="O3">Ozone (O3)</option>
+                <option value="PM2.5">Particulate Matter (PM2.5)</option>
+                <option value="SO2">Sulfur Dioxide (SO2)</option>
+                <option value="CO">Carbon Monoxide (CO)</option>
+                <option value="NO2">Nitrogen Dioxide (NO2)</option>
+                <option value="PM10">Particulate Matter (PM10)</option>
+            </select>
+        </div>
+    </form>
+    <!-- Map container -->
+    <div id="map" style="width: 95%; height: 500px;"></div>
+    <br><br>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Include jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- logic.js script that handles data -->
+    <script src="../static/js/logic.js"></script>
+</body>
+</html>
