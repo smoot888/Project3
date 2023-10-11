@@ -83,7 +83,7 @@ function createHeatMap(data) {
    
 function buttonClick(){
     // Fetch data and populate dropdowns when the page loads
-    fetch('../data/histUpdate.json')
+    fetch('../../data/histUpdate.json')
         .then(response => response.json())
         .then(data => {
             // Filter the data based on dropdown selections
