@@ -10,7 +10,7 @@ from flask import Flask, jsonify
 # Create a reference to the file.
 City = Path("../data/city.sqlite")
 County = Path("../data/county.sqlite")
-Historical = Path("../data/historical.sqlite")
+Historical = Path("../data/historical2.sqlite")
 engine_City = create_engine(f"sqlite:///{City}")
 engine_County = create_engine(f"sqlite:///{County}")
 engine_Historical = create_engine(f"sqlite:///{Historical}")

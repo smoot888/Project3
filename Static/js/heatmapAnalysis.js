@@ -76,14 +76,14 @@ function createHeatMap(data) {
         
         console.log(testmax);
         console.log(max);
-        heatmapLayer.setData({"max":max,"min":0,"data":data});
+        heatmapLayer.setData({"max":testmax,"min":0,"data":data});
 
 };
 
    
 function buttonClick(){
     // Fetch data and populate dropdowns when the page loads
-    fetch('../../data/histUpdate.json')
+    fetch('http://127.0.0.1:5000/api/v1.0/historical')
         .then(response => response.json())
         .then(data => {
             // Filter the data based on dropdown selections
