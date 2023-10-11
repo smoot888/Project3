@@ -62,14 +62,14 @@ function createChart(data){
         }];
 
     var layout = {
-    title: 'Sales Growth',
+    title: 'Pollution Trends (by City)',
     xaxis: {
         title: 'Year',
         showgrid: false,
         zeroline: false
         },
     yaxis: {
-        title: 'Percent',
+        title: 'Pollution',
         showline: false
         }
     };
