@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pollution Data Analysis</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Pollution Data Analysis</h1>
+    <table>
+        <tr>
+            <td align="center">
+                <img src="analysis/ArkadelphiaO3reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Arkadelphia O3
+            </td>
+            <td>
+                <img src="analysis/BaltimoreO3reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Baltimore O3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="analysis/BirminghamO3reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Birmingham O3
+            </td>
+            <td>
+                <img src="analysis/DenverO3reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Denver O3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="analysis/Eugene25reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Eugene 2.5
+            </td>
+            <td>
+                <img src="analysis/Baltimore25reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Baltimore 2.5
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="analysis/Birmingham25reg.png" width="750px" height="auto" onclick="openImage(this)">
+                <br>
+                Birmingham 2.5
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+
+    <div id="overlay" onclick="closeImage()">
+        <span id="close-button" onclick="closeImage()">&times;</span>
+        <img id="overlay-image" src="" alt="Popup Image">
+    </div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
