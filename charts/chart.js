@@ -155,7 +155,7 @@ o3Chart = new Chart(o3Canvas, {
 d3.json("data/histUpdate.json").then(function (data) {
   console.log(data);
   // Extract all unique cities from the data
-  const uniqueCities = [...new Set(data.map(entry => entry.City)];
+  const uniqueCities = [...new Set(data.map(entry => entry.City))];
 
   // Populate the dropdown options with unique cities
   const citySelect = document.getElementById("citySelect");
