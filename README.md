@@ -2,6 +2,7 @@
 Air Pollution in the United States
 
 SQL code for each table
+
 CREATE TABLE IF NOT EXISTS public."AirQuality_City_2022"
 (
     "City" character varying(100) COLLATE pg_catalog."default" NOT NULL,
