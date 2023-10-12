@@ -1,6 +1,12 @@
 # Project3
 Air Pollution in the United States
 
+Instructions for running our code:
+1. run API in gitbash using command "python API.py"
+2. Use "Go Live" in VS CODE on the home.html page
+3. You might need to download a CORS chorme extension to get the visualazations permission to access the flask API data that is being run locally.
+
+
 SQL code for each table
 
 CREATE TABLE IF NOT EXISTS public."AirQuality_City_2022"
